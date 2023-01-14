@@ -7,15 +7,7 @@ import { Ejercicio1Service } from '../ejercicio1/ejercicio1.service';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Tribe } from './entities/tribe.entity';
 import { Repository as RepositoryEntity } from './entities/repository.entity';
-import {
-  Between,
-  Equal,
-  FindOptionsWhere,
-  LessThanOrEqual,
-  MoreThan,
-  MoreThanOrEqual,
-  Repository,
-} from 'typeorm';
+import { Between, FindOptionsWhere, MoreThan, Repository } from 'typeorm';
 import { STATES_ENUM, STATES_TEXT_ENUM } from './enums';
 import { QueryFilter } from './interfaces';
 import { endOfDay, startOfDay } from 'date-fns';
