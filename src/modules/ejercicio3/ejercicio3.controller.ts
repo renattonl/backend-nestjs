@@ -1,5 +1,6 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Controller, Get, Param, Query } from '@nestjs/common';
 import { Ejercicio3Service } from './ejercicio3.service';
+import { QueryFilter } from './interfaces';
 
 @Controller('ejercicio3')
 export class Ejercicio3Controller {
@@ -16,8 +17,11 @@ export class Ejercicio3Controller {
   }
 
   @Get('escenario3/:id_tribe')
-  escenario3(@Param('id_tribe') id_tribe: string) {
-    return this.service.escenario3(+id_tribe);
+  escenario3(
+    @Param('id_tribe') id_tribe: string,
+    @Query() queryParams: QueryFilter,
+  ) {
+    return this.service.escenario3(+id_tribe, queryParams);
   }
 
   @Get('escenario4/:id_tribe')

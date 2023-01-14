@@ -7,9 +7,18 @@ import { Ejercicio1Service } from '../ejercicio1/ejercicio1.service';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Tribe } from './entities/tribe.entity';
 import { Repository as RepositoryEntity } from './entities/repository.entity';
-import { Between, MoreThan, Repository } from 'typeorm';
-import { STATES_ENUM } from './enums';
-import { STATES_TEXT_ENUM } from './enums/index';
+import {
+  Between,
+  Equal,
+  FindOptionsWhere,
+  LessThanOrEqual,
+  MoreThan,
+  MoreThanOrEqual,
+  Repository,
+} from 'typeorm';
+import { STATES_ENUM, STATES_TEXT_ENUM } from './enums';
+import { QueryFilter } from './interfaces';
+import { endOfDay, startOfDay } from 'date-fns';
 
 @Injectable()
 export class Ejercicio3Service {
@@ -79,13 +88,23 @@ export class Ejercicio3Service {
     return tribe;
   }
 
-  async escenario3(id_tribe: number) {
+  async escenario3(id_tribe: number, queryParams?: QueryFilter) {
+    const queryWhere: FindOptionsWhere<RepositoryEntity> = { id_tribe };
+    if (queryParams) {
+      if (queryParams.state) queryWhere.state = queryParams.state;
+      if (queryParams.create_time) {
+        const [anio, month, day] = queryParams.create_time.split('-');
+        const date = new Date(+anio, +month - 1, +day);
+        queryWhere.create_time = Between(startOfDay(date), endOfDay(date));
+      }
+      if (queryParams.coverage) {
+        queryWhere.metrics = {
+          coverage: +queryParams.coverage,
+        };
+      }
+    }
     const rows = await this.repositoryRepository.find({
-      where: [
-        {
-          id_tribe,
-        },
-      ],
+      where: [queryWhere],
       relations: ['tribe', 'tribe.organization', 'metrics'],
     });
     return this.getDataRepositories(rows);
