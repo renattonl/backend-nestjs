@@ -5,34 +5,17 @@
 [circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
 [circleci-url]: https://circleci.com/gh/nestjs/nest
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## Reto Tècnico para el puedo Backend NodeJS
 
-## Description
+A continuaciòn se detalla la instalaciòn y los endpoints realizados.
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
-
-## Installation
+## Instalaciòn de paquetes
 
 ```bash
 $ npm install
 ```
 
-## Running the app
+## Corriendo la aplicaciòn
 
 ```bash
 # development
@@ -58,16 +41,104 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
-## Support
+## Ejercicio 1
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+- Diseñar un servicio simulado tipo GET
 
-## Stay in touch
+```
+GET: http://localhost:3333/ejercicio1
+```
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+## Ejercicio 2
 
-## License
+- Diseñar una API Rest con las operaciones básicas (CRUD).
+- Arquitectura del proyecto.
+- Buenas prácticas.
+- Mapeado de entidad a un DTO (Data Transfer Object).
+- Micro commits.
 
-Nest is [MIT licensed](LICENSE).
+_Escenario 1: Crear organización:_
+
+```
+POST: http://localhost:3333/ejercicio2
+BODY:
+{
+  "name": "Banco Pichincha",
+  "status": "1"
+}
+```
+
+_Escenario 2: Editar organización_
+
+```
+PATH: http://localhost:3333/ejercicio2/1
+{
+  "name": "Banco Pichincha",
+  "status": "1"
+}
+```
+
+_Escenario 3: Obtener organizaciones_
+
+```
+GET: http://localhost:3333/ejercicio2
+GET: http://localhost:3333/ejercicio2/1
+```
+
+_Escenario 4: Eliminar organizaciones_
+
+```
+DELETE: http://localhost:3333/ejercicio2/1
+```
+
+## Ejercicio 3
+
+- Relaciones entre de entidades.
+- Control de excepciones.
+- Pruebas unitarias por comportamientos.
+- Formato de respuesta requerida.
+- Uso correcto de enumerados y constantes.
+
+_Escenario 1: Obtener métricas de repositorios por tribu:_
+
+```
+GET: http://localhost:3333/ejercicio3/escenario1/:id_tribe
+EXAMPLE: http://localhost:3333/ejercicio3/escenario1/1
+```
+
+_Escenario 2: Tribu inexistente._
+
+```
+GET: http://localhost:3333/ejercicio3/escenario2/:id_tribe
+EXAMPLE: http://localhost:3333/ejercicio3/escenario2/10
+```
+
+_Escenario 3: Información de verificación._
+
+```
+GET: http://localhost:3333/ejercicio3/escenario3/:id_tribe
+EXAMPLE: http://localhost:3333/ejercicio3/escenario3/1
+```
+
+_Escenario 4: Tribu no tiene repositorios que cumplan con la cobertura._
+
+```
+GET: http://localhost:3333/ejercicio3/escenario4/:id_tribe
+EXAMPLE: http://localhost:3333/ejercicio3/escenario4/1
+```
+
+## Ejercicio 4
+
+- Generar reporte en csv a través de un endpoint.
+
+_Escenario 1: Generar reporte_
+
+```
+GET: http://localhost:3333/ejercicio4/escenario1/:id_tribe
+EXAMPLE: http://localhost:3333/ejercicio4/escenario1/1
+```
+
+## Detalle del Autor
+
+Pedro Renatto Neciosup Liza
+renattonl@gmail.com
