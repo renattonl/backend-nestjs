@@ -36,9 +36,9 @@ export class Repository {
   state: STATES_ENUM;
 
   @Column({
-    type: 'timestamp',
+    type: 'timestamptz',
     nullable: false,
-    default: new Date(),
+    default: new Date().toISOString(),
   })
   create_time: Date;
 
