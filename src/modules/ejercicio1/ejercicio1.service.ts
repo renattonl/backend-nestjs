@@ -1,19 +1,17 @@
 import { Injectable } from '@nestjs/common';
 import { CODES } from './const';
+import { repositoriesMock } from './mocks';
 import { Repository } from './entities/repository.entity';
 
 @Injectable()
-export class RepositoriesService {
-  private repositories: Repository[] = [
-    { id: 1, state: 604 },
-    { id: 2, state: 605 },
-    { id: 3, state: 606 },
-  ];
+export class Ejercicio1Service {
+  private repositories: Repository[] = repositoriesMock;
 
   findAll() {
-    return this.repositories.map((item) => {
+    const repositories = this.repositories.map((item) => {
       const code = CODES[item.state] || '';
       return { ...item, code };
     });
+    return { repositories };
   }
 }
